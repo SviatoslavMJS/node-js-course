@@ -6,12 +6,7 @@ const { ENDPOINT } = require("./constants");
 const requestHandler = (req, res) => {
   const { url, method } = req;
   if (url === ENDPOINT.HOME) {
-    res.write(
-      getHTMLText(
-        "Enter message",
-        `<form action="${ENDPOINT.MESSAGE}" method="POST"><input type="text" name="message" /><button type="submit">Submit</button></form>`
-      )
-    );
+    res.write(getHTMLText("Enter message"));
 
     return res.end();
   }
@@ -30,7 +25,7 @@ const requestHandler = (req, res) => {
     });
   }
 
-  res.write(getHTMLText());
+  res.write(getHTMLText(undefined, "<h1>Some text<h1>"));
   res.end();
 };
 
