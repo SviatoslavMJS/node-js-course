@@ -6,7 +6,7 @@ const getHTMLText = (title, body) => `<html>
 </head>
   <body>${
     body ??
-    `<form action="${ENDPOINT.PRODUCT}" method="POST"><input type="text" name="product" /><button type="submit">Submit</button></form>`
+    `<form action="${ENDPOINT.ADMIN}/${ENDPOINT.ADD_PRODUCT}" method="POST"><input type="text" name="product" /><button type="submit">Submit</button></form>`
   }</body>
 </html>`;
 
