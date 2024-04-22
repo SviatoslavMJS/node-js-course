@@ -1,24 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const { getHTMLText } = require("./helpers");
-const { ENDPOINT } = require("./constants");
+const shopRouter = require("./routes/shop");
+const adminRouter = require("./routes/admin");
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(ENDPOINT.ADD_PRODUCT, (req, res, next) => {
-  res.send(getHTMLText("Add product"));
-});
+app.use(shopRouter);
+app.use(adminRouter);
 
-app.post(ENDPOINT.PRODUCT, (req, res, next) => {
-  console.log(req.body);
-  res.redirect(ENDPOINT.HOME);
-});
-
-app.use(ENDPOINT.HOME, (req, res, next) => {
-  res.send("<h1>Home page</h1>");
-});
+app.use((req, res) => res.status(404).send("<h1>Page not found</h1>"));
 
 app.listen(3006);
