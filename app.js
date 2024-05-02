@@ -5,10 +5,12 @@ const bodyParser = require("body-parser");
 const rootDir = require("./util/path");
 
 const shopRouter = require("./routes/shop");
-const adminRouter = require("./routes/admin");
+const { adminRouter } = require("./routes/admin");
 const { ENDPOINT } = require("./constants");
 
 const app = express();
+
+app.set("view engine", "pug");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(rootDir, "public")));

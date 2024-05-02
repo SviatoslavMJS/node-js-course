@@ -7,15 +7,17 @@ const { ENDPOINT } = require("../constants");
 
 const router = express.Router();
 
+const products = [];
+
 // /admin/add-product => GET
 router.get(ENDPOINT.ADD_PRODUCT, (req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+  res.render("add-product", { docTitle: "Add product | NodeJS" });
 });
 
 // /admin/add-product => POST
 router.post(ENDPOINT.ADD_PRODUCT, (req, res, next) => {
-  console.log(req.body);
+  products.push(req.body);
   res.redirect(ENDPOINT.HOME);
 });
 
-module.exports = router;
+module.exports = { adminRouter: router, products };
