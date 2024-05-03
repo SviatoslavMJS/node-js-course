@@ -11,10 +11,14 @@ const router = express.Router();
 
 router.get(ENDPOINT.HOME, (req, res, next) => {
   // res.sendFile(path.join(rootDir, "views", "shop.html"));
+  const prods = adminData.products;
   res.render("shop", {
-    prods: adminData.products,
-    docTitle: "Shop | NodeJS",
+    prods,
     path: "/",
+    activeShop: true,
+    productCSS: true,
+    docTitle: "Shop | NodeJS",
+    hasProducts: prods.length > 0,
   });
 });
 

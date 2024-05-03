@@ -14,6 +14,9 @@ router.get(ENDPOINT.ADD_PRODUCT, (req, res, next) => {
   res.render("add-product", {
     path: "/admin/add-product",
     docTitle: "Add product | NodeJS",
+    activeAddProduct: true,
+    formsCSS: true,
+    productCSS: true,
   });
 });
 
