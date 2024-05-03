@@ -11,7 +11,11 @@ const router = express.Router();
 
 router.get(ENDPOINT.HOME, (req, res, next) => {
   // res.sendFile(path.join(rootDir, "views", "shop.html"));
-  res.render("shop", { prods: adminData.products, docTitle: 'Shop | NodeJS' });
+  res.render("shop", {
+    prods: adminData.products,
+    docTitle: "Shop | NodeJS",
+    path: "/",
+  });
 });
 
 module.exports = router;

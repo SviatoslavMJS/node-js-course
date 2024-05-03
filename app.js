@@ -18,8 +18,6 @@ app.use(express.static(path.join(rootDir, "public")));
 app.use(shopRouter);
 app.use(ENDPOINT.ADMIN, adminRouter);
 
-app.use((req, res) =>
-  res.status(404).sendFile(path.join(rootDir, "views", "not-found.html"))
-);
+app.use((req, res) => res.render("not-found", { docTitle: "Not found | NodeJS" }));
 
 app.listen(3006);

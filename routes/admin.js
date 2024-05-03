@@ -11,7 +11,10 @@ const products = [];
 
 // /admin/add-product => GET
 router.get(ENDPOINT.ADD_PRODUCT, (req, res, next) => {
-  res.render("add-product", { docTitle: "Add product | NodeJS" });
+  res.render("add-product", {
+    path: "/admin/add-product",
+    docTitle: "Add product | NodeJS",
+  });
 });
 
 // /admin/add-product => POST
