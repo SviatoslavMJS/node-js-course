@@ -1,25 +1,25 @@
-const path = require("path");
-const express = require("express");
+const path = require('path');
 
-const rootDir = require("../util/path");
-const adminData = require("./admin");
+const express = require('express');
 
-// const { getHTMLText } = require("../helpers");
-const { ENDPOINT } = require("../constants");
+const shopController = require('../controllers/shop');
 
 const router = express.Router();
 
-router.get(ENDPOINT.HOME, (req, res, next) => {
-  // res.sendFile(path.join(rootDir, "views", "shop.html"));
-  const prods = adminData.products;
-  res.render("shop", {
-    prods,
-    path: "/",
-    activeShop: true,
-    productCSS: true,
-    docTitle: "Shop | NodeJS",
-    hasProducts: prods.length > 0,
-  });
-});
+router.get('/', shopController.getIndex);
+
+router.get('/products', shopController.getProducts);
+
+router.get('/products/:productId', shopController.getProduct);
+
+router.get('/cart', shopController.getCart);
+
+router.post('/cart', shopController.postCart);
+
+router.post('/cart-delete-item', shopController.postCartDeleteProduct);
+
+router.get('/orders', shopController.getOrders);
+
+router.get('/checkout', shopController.getCheckout);
 
 module.exports = router;
